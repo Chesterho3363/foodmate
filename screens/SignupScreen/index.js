@@ -1,4 +1,5 @@
 import React from 'react';
+import DatePicker from 'react-native-datepicker';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
 export default class App extends React.Component {
@@ -9,11 +10,17 @@ export default class App extends React.Component {
   render(){
     return (
       <View style={styles.container}>
-        <Text style={styles.logo}>foodmate</Text>
         <View style={styles.inputView} >
           <TextInput  
             style={styles.inputText}
-            placeholder="Username or email" 
+            placeholder="Username" 
+            placeholderTextColor="#707070"
+            onChangeText={text => this.setState({username:text})}/>
+        </View>
+        <View style={styles.inputView} >
+          <TextInput  
+            style={styles.inputText}
+            placeholder="Email" 
             placeholderTextColor="#707070"
             onChangeText={text => this.setState({email:text})}/>
         </View>
@@ -25,14 +32,8 @@ export default class App extends React.Component {
             placeholderTextColor="#707070"
             onChangeText={text => this.setState({password:text})}/>
         </View>
-        <TouchableOpacity>
-          <Text style={styles.forgot}>Forgot Password?</Text>
-        </TouchableOpacity>
         <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Log In</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={styles.signUpText}>Sign Up</Text>
+          <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
 
   
@@ -48,13 +49,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  logo:{
-    fontWeight:"bold",
-    fontSize:50,
-    color:'black',
-    marginBottom:40,
-    letterSpacing: 3
-  },
   inputView:{
     width:"80%",
     backgroundColor:"#FAF7F0",
@@ -68,11 +62,6 @@ const styles = StyleSheet.create({
     height:50,
     color:"black"
   },
-  forgot:{
-    color:"#FBAF02",
-    fontSize:12,
-    marginLeft: 200
-  },
   loginBtn:{
     width:"80%",
     backgroundColor:"#FBAF02",
@@ -83,7 +72,7 @@ const styles = StyleSheet.create({
     marginTop:50,
     marginBottom:10
   },
-  loginText:{
+  buttonText:{
     fontSize:16,
     color:"white"
   },
